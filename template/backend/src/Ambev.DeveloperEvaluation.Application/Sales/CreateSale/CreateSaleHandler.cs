@@ -39,31 +39,41 @@ public class CreateSaleHandler : IRequestHandler<CreateSaleCommand, CreateSaleRe
         if (!validationResult.IsValid)
             throw new ValidationException(validationResult.Errors);
 
-        // Map command to Sale entity
         var sale = new Sale
         {
             Id = Guid.NewGuid(),
             SaleNumber = command.SaleNumber,
             Branch = command.Branch,
             CreatedAt = DateTime.UtcNow,
-            Items = command.Items.Select(item =>
-            {
-                // Calcular desconto
-                var basePrice = 100m; // Exemplo fixo (em projeto real, seria do produto)
-                var discountAmount = basePrice * item.Quantity * (item.DiscountPercentage / 100);
-                var finalPrice = basePrice * item.Quantity - discountAmount;
-
-                return new SaleItem
-                {
-                    Id = Guid.NewGuid(),
-                    ProductId = item.ProductId,
-                    Quantity = item.Quantity,
-                    DiscountPercentage = item.DiscountPercentage,
-                    DiscountAmount = discountAmount,
-                    FinalPrice = finalPrice
-                };
-            }).ToList()
+            Items = new List<SaleItem>()
         };
+
+        foreach (var item in command.Items)
+        {
+            if (item.Quantity > 20)
+                throw new Exception($"Produto {item.ProductId} excede o limite de 20 unidades por venda.");
+
+            decimal basePrice = 100m; // Valor fixo, pode ser ajustado depois
+
+            decimal discountPercentage = 0;
+            if (item.Quantity >= 4 && item.Quantity < 10)
+                discountPercentage = 10;
+            else if (item.Quantity >= 10 && item.Quantity <= 20)
+                discountPercentage = 20;
+
+            decimal discountAmount = basePrice * item.Quantity * (discountPercentage / 100);
+            decimal finalPrice = basePrice * item.Quantity - discountAmount;
+
+            sale.Items.Add(new SaleItem
+            {
+                Id = Guid.NewGuid(),
+                ProductId = item.ProductId,
+                Quantity = item.Quantity,
+                DiscountPercentage = discountPercentage,
+                DiscountAmount = discountAmount,
+                FinalPrice = finalPrice
+            });
+        }
 
         var createdSale = await _saleRepository.CreateAsync(sale, cancellationToken);
         var result = _mapper.Map<CreateSaleResult>(createdSale);

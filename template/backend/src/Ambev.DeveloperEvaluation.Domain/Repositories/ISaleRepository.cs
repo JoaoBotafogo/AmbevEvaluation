@@ -25,7 +25,6 @@ public interface ISaleRepository
 
     Task UpdateAsync(Sale sale, CancellationToken cancellationToken);
 
-
     /// <summary>
     /// Deletes a sale
     /// </summary>
