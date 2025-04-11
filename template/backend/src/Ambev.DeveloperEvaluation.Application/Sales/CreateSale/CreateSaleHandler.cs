@@ -54,7 +54,7 @@ public class CreateSaleHandler : IRequestHandler<CreateSaleCommand, CreateSaleRe
             if (item.Quantity > 20)
                 throw new Exception($"Produto {item.ProductId} excede o limite de 20 unidades por venda.");
 
-            decimal basePrice = 100m; // Valor fixo, pode ser ajustado depois
+            decimal basePrice = 100m; 
 
             decimal discountPercentage = 0;
             if (item.Quantity >= 4 && item.Quantity < 10)
