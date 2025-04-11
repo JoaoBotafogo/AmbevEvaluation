@@ -24,6 +24,8 @@ public class CreateSaleCommand : IRequest<CreateSaleResult>
     /// </summary>
     public string Branch { get; set; } = default!;
 
+    public string Customer { get; set; } = default!;
+
     /// <summary>
     /// Gets or sets the list of items included in the sale.
     /// </summary>

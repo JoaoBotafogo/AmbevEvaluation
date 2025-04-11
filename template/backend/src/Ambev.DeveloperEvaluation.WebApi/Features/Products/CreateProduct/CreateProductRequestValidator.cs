@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
 
-namespace WebApi.Features.Products.CreateProduct;
+namespace Ambev.DeveloperEvaluation.WebApi.Features.Products.CreateProducts;
 
-public class CreateProductValidator : AbstractValidator<CreateProductRequest>
+public class CreateProductRequestValidator : AbstractValidator<CreateProductRequest>
 {
-    public CreateProductValidator()
+    public CreateProductRequestValidator()
     {
         RuleFor(x => x.Code)
             .NotEmpty().WithMessage("Code is required.")

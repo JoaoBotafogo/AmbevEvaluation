@@ -2,9 +2,9 @@
 
 namespace WebApi.Features.Products.GetProduct;
 
-public class GetProductValidator : AbstractValidator<GetProductRequest>
+public class GetProductRequestValidator : AbstractValidator<GetProductRequest>
 {
-    public GetProductValidator()
+    public GetProductRequestValidator()
     {
         RuleFor(x => x.Id).NotEmpty();
     }

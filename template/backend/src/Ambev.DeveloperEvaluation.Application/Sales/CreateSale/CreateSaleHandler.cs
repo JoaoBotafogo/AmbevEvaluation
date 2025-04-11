@@ -43,6 +43,7 @@ public class CreateSaleHandler : IRequestHandler<CreateSaleCommand, CreateSaleRe
         {
             Id = Guid.NewGuid(),
             SaleNumber = command.SaleNumber,
+            Customer = command.Customer,
             Branch = command.Branch,
             CreatedAt = DateTime.UtcNow,
             Items = new List<SaleItem>()

@@ -1,4 +1,4 @@
-﻿namespace WebApi.Features.Products.CreateProduct;
+﻿namespace Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
 
 public class CreateProductResult
 {

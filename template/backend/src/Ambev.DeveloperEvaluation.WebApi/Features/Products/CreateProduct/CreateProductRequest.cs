@@ -1,8 +1,6 @@
-﻿using MediatR;
+﻿namespace Ambev.DeveloperEvaluation.WebApi.Features.Products.CreateProducts;
 
-namespace WebApi.Features.Products.CreateProduct;
-
-public class CreateProductRequest : IRequest<CreateProductResponse>
+public class CreateProductRequest
 {
     public string Code { get; set; } = default!;
     public string Name { get; set; } = default!;

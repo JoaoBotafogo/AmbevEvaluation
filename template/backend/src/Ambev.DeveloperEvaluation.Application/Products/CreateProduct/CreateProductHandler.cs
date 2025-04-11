@@ -3,7 +3,7 @@ using Ambev.DeveloperEvaluation.Domain.Repositories;
 using Domain.Entities;
 using MediatR;
 
-namespace WebApi.Features.Products.CreateProduct;
+namespace Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
 
 public class CreateProductHandler : IRequestHandler<CreateProductCommand, CreateProductResult>
 {

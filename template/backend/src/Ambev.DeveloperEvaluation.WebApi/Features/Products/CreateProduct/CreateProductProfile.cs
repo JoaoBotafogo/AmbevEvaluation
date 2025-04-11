@@ -1,10 +1,19 @@
-﻿namespace WebApi.Features.Products.CreateProduct;
+﻿using AutoMapper;
+using Ambev.DeveloperEvaluation.Application.Products.CreateProduct;
 
-public class CreateProductProfile
+namespace Ambev.DeveloperEvaluation.WebApi.Features.Products.CreateProducts;
+
+/// <summary>
+/// Profile for mapping between Application and API CreateUser responses
+/// </summary>
+public class CreateProductProfile : Profile
 {
-    public Guid Id { get; set; }
-    public string Code { get; set; } = null!;
-    public string Name { get; set; } = null!;
-    public string Description { get; set; } = null!;
-    public decimal Price { get; set; }
+    /// <summary>
+    /// Initializes the mappings for CreateUser feature
+    /// </summary>
+    public CreateProductProfile()
+    {
+        CreateMap<CreateProductRequest, CreateProductCommand>();
+        CreateMap<CreateProductResult, CreateProductResponse>();
+    }
 }

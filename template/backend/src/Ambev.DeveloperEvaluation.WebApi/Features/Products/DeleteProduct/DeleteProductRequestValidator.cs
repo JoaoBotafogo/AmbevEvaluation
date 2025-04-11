@@ -2,9 +2,9 @@
 
 namespace WebApi.Features.Products.DeleteProduct;
 
-public class DeleteProductValidator : AbstractValidator<DeleteProductRequest>
+public class DeleteProductRequestValidator : AbstractValidator<DeleteProductRequest>
 {
-    public DeleteProductValidator()
+    public DeleteProductRequestValidator()
     {
         RuleFor(x => x.Id).NotEmpty();
     }

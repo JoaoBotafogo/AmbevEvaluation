@@ -15,6 +15,8 @@ public class CreateSaleResult
     /// </summary>
     public string SaleNumber { get; set; } = string.Empty;
 
+    public string Costumer { get; set; } = string.Empty;
+
     /// <summary>
     /// The branch where the sale occurred.
     /// </summary>
