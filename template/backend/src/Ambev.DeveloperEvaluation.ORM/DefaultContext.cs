@@ -1,4 +1,5 @@
 ﻿using Ambev.DeveloperEvaluation.Domain.Entities;
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
@@ -10,6 +11,8 @@ public class DefaultContext : DbContext
 {
     public DbSet<User> Users { get; set; }
     public DbSet<Sale> Sales { get; set; }
+
+    public DbSet<Product> Products { get; set; }
 
     public DefaultContext(DbContextOptions<DefaultContext> options) : base(options)
     {
